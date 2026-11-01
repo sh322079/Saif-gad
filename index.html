@@ -1,0 +1,933 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAIF GAD | THE ENGLISH MASTER</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --gold: #e8bd62;
+    --gold-light: #fff0bd;
+    --gold-dark: #9b6b20;
+    --bg: #070707;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: white;
+    font-family: Arial, 'Cairo', sans-serif;
+    overflow-x: hidden;
+}
+
+body.ar {
+    font-family: 'Cairo', Arial, sans-serif;
+    direction: rtl;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* BACKGROUND */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+    background:
+        radial-gradient(ellipse at 20% 25%, #bd84251b, transparent 35%),
+        radial-gradient(ellipse at 80% 75%, #e8bd6217, transparent 35%),
+        #070707;
+}
+
+.gold-light {
+    position: absolute;
+    width: 700px;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #9b6b20,
+        #fff0bd,
+        #e8bd62,
+        transparent
+    );
+    opacity: .25;
+    filter: blur(1px);
+}
+
+.gold-light.one {
+    top: 28%;
+    left: -20%;
+    transform: rotate(-18deg);
+}
+
+.gold-light.two {
+    top: 75%;
+    right: -20%;
+    transform: rotate(15deg);
+}
+
+/* NAVBAR */
+
+nav {
+    position: fixed;
+    top: 12px;
+    left: 3%;
+    width: 94%;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 22px;
+    border: 1px solid #e8bd6255;
+    border-radius: 50px;
+    background: #090909ed;
+    backdrop-filter: blur(18px);
+    box-shadow: 0 0 18px #e8bd6218;
+}
+
+.brand {
+    color: var(--gold);
+    font-weight: 900;
+    font-size: 23px;
+}
+
+.navlinks {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.navlinks a {
+    font-size: 13px;
+    color: #eee;
+}
+
+.navlinks a:hover {
+    color: var(--gold-light);
+}
+
+.navtools {
+    display: flex;
+    gap: 8px;
+}
+
+.navbtn {
+    border: 1px solid #e8bd6266;
+    background: #15110a;
+    color: var(--gold);
+    padding: 9px 13px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.menu {
+    display: none;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+    padding: 140px 7% 75px;
+    display: grid;
+    grid-template-columns: .85fr 1.3fr;
+    align-items: center;
+    gap: 55px;
+}
+
+.portrait-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.portrait-ring {
+    width: min(360px, 75vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: 7px;
+    position: relative;
+    background: linear-gradient(
+        135deg,
+        #684414,
+        #fff0bd,
+        #c18b36,
+        #fff5d6,
+        #9b6b20,
+        #e8bd62
+    );
+    box-shadow: 0 0 22px #e8bd6233;
+}
+
+.portrait-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #080808;
+    padding: 5px;
+}
+
+.portrait-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    animation: none;
+    transform: none;
+}
+
+.portrait-glow {
+    position: absolute;
+    inset: -25px;
+    border-radius: 50%;
+    border: 1px solid #e8bd6233;
+    pointer-events: none;
+}
+
+.portrait-label {
+    position: absolute;
+    bottom: -15px;
+    background: #090909;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 10px 25px;
+    border-radius: 30px;
+    letter-spacing: 3px;
+    font-size: 12px;
+}
+
+/* HERO TEXT */
+
+.hero-content {
+    text-align: left;
+}
+
+body.ar .hero-content {
+    text-align: right;
+}
+
+.welcome {
+    color: #fff;
+    font-size: 25px;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 15px;
+}
+
+.welcome span {
+    color: var(--gold);
+}
+
+/* ONLY THIS NAME ANIMATES */
+
+.hero h1 {
+    font-size: clamp(55px, 8vw, 105px);
+    line-height: 1.1;
+    font-weight: 1000;
+    letter-spacing: 2px;
+    background: linear-gradient(
+        180deg,
+        #fff8dc,
+        #e8bd62 55%,
+        #a87528
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: nameGlow 3.5s ease-in-out infinite;
+}
+
+@keyframes nameGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 3px #e8bd6244);
+    }
+
+    50% {
+        filter:
+            drop-shadow(0 0 10px #e8bd62)
+            drop-shadow(0 0 25px #e8bd6266);
+    }
+}
+
+.master {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 12px 28px;
+    color: #090909;
+    background: linear-gradient(
+        100deg,
+        #a87528,
+        #fff0bd,
+        #d7a94f
+    );
+    font-size: clamp(17px, 2.5vw, 27px);
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.arabic-tag {
+    margin-top: 24px;
+    color: #e8bd62;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.motto {
+    margin-top: 15px;
+    color: #ddd;
+    font-size: 19px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 27px;
+    border-radius: 40px;
+    font-weight: bold;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.btn.gold {
+    color: #090909;
+    background: linear-gradient(
+        100deg,
+        #b17a2c,
+        #fff0bd,
+        #d8a94f
+    );
+    box-shadow: 0 0 14px #e8bd6233;
+}
+
+.btn.outline {
+    color: var(--gold);
+    border-color: #e8bd6299;
+    background: #e8bd620b;
+}
+
+/* SECTIONS */
+
+section {
+    padding: 90px 8%;
+    position: relative;
+}
+
+.section-heading {
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 18px;
+    color: var(--gold);
+    text-shadow: 0 0 12px #e8bd6244;
+}
+
+.section-sub {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 45px;
+    line-height: 1.8;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.about-box {
+    padding: 35px;
+    border: 1px solid #e8bd6244;
+    border-radius: 20px;
+    background: linear-gradient(140deg, #17130ddd, #080808dd);
+    box-shadow: 0 0 20px #e8bd6210;
+    line-height: 2;
+    color: #ccc;
+}
+
+.about-box h3 {
+    color: var(--gold);
+    margin-bottom: 15px;
+    font-size: 25px;
+}
+
+.about-decoration {
+    font-size: 100px;
+    text-align: center;
+    color: var(--gold);
+    text-shadow: 0 0 25px #e8bd6255;
+}
+
+/* CARDS */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    text-align: center;
+    padding: 30px 18px;
+    border: 1px solid #e8bd6233;
+    border-radius: 18px;
+    background: linear-gradient(145deg, #17140eee, #080808ee);
+}
+
+.card-icon {
+    font-size: 40px;
+    margin-bottom: 18px;
+}
+
+.card h3 {
+    color: var(--gold);
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.card p {
+    color: #aaa;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+/* LEVELS */
+
+.levels {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.level {
+    padding: 28px;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid #e8bd6255;
+    background: #17120a88;
+}
+
+.level h3 {
+    color: var(--gold);
+    margin-bottom: 12px;
+}
+
+.level p {
+    color: #bbb;
+    line-height: 1.7;
+}
+
+/* CONTACT */
+
+.contact-box {
+    text-align: center;
+    padding: 55px 20px;
+    border: 1px solid #e8bd6266;
+    border-radius: 25px;
+    background: linear-gradient(
+        130deg,
+        #20170799,
+        #100d08aa,
+        #08080899
+    );
+    box-shadow: 0 0 25px #e8bd6218;
+}
+
+.contact-box p {
+    color: #ccc;
+    margin: 20px 0 30px;
+    line-height: 1.8;
+}
+
+footer {
+    padding: 30px 15px;
+    text-align: center;
+    color: #aaa;
+    border-top: 1px solid #e8bd6233;
+    background: #050505dd;
+}
+
+footer strong {
+    color: var(--gold);
+}
+
+#top {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    background: #090909;
+    color: var(--gold);
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 50;
+}
+
+body.ar #top {
+    right: auto;
+    left: 22px;
+}
+
+/* MOBILE */
+
+@media(max-width: 900px) {
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 50px;
+    }
+
+    .hero-content,
+    body.ar .hero-content {
+        text-align: center;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-decoration {
+        display: none;
+    }
+
+    .levels {
+        grid-template-columns: 1fr;
+    }
+
+    .navlinks {
+        display: none;
+    }
+
+    .menu {
+        display: block;
+    }
+
+    .navlinks.open {
+        display: flex;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        padding: 25px;
+        background: #090909;
+        border: 1px solid #e8bd6255;
+        border-radius: 20px;
+    }
+}
+
+@media(max-width: 520px) {
+    nav {
+        padding: 12px 15px;
+    }
+
+    .brand {
+        font-size: 18px;
+    }
+
+    .hero {
+        padding-top: 120px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading {
+        font-size: 29px;
+    }
+
+    .welcome {
+        font-size: 20px;
+    }
+
+    .arabic-tag {
+        font-size: 17px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background">
+    <div class="gold-light one"></div>
+    <div class="gold-light two"></div>
+</div>
+
+<nav>
+    <div class="brand">♛ SAIF GAD</div>
+
+    <div class="navlinks" id="navlinks">
+        <a href="#home" data-en="Home" data-ar="الرئيسية">Home</a>
+        <a href="#courses" data-en="Courses" data-ar="الكورسات">Courses</a>
+        <a href="#about" data-en="About" data-ar="من أنا">About</a>
+        <a href="#levels" data-en="Levels" data-ar="المستويات">Levels</a>
+        <a href="#contact" data-en="Contact" data-ar="تواصل">Contact</a>
+    </div>
+
+    <div class="navtools">
+        <button class="navbtn" id="lang">عربي</button>
+        <button class="navbtn menu" id="menu">☰</button>
+    </div>
+</nav>
+
+<header class="hero" id="home">
+
+    <div class="portrait-area">
+        <div class="portrait-glow"></div>
+
+        <div class="portrait-ring">
+            <div class="portrait-inner">
+                <img src="saif.jpg" alt="Mr Saif Gad"
+                onerror="this.src='https://placehold.co/600x600/090909/e8bd62?text=SAIF+GAD'">
+            </div>
+        </div>
+
+        <div class="portrait-label">THE ENGLISH MASTER</div>
+    </div>
+
+    <div class="hero-content">
+
+        <div class="welcome"
+        data-en="Welcome To My Website"
+        data-ar="أهلاً بيكم في موقعي">
+            Welcome To My Website
+        </div>
+
+        <h1>SAIF GAD</h1>
+
+        <div class="master">THE ENGLISH MASTER</div>
+
+        <div class="arabic-tag"
+        data-en="Together, Let's Master English"
+        data-ar="معاً .. نحو إتقان اللغة الإنجليزية">
+            Together, Let's Master English
+        </div>
+
+        <div class="motto"
+        data-en="Learn • Practice • Excel"
+        data-ar="اتعلم • اتدرب • اتفوق">
+            Learn • Practice • Excel
+        </div>
+
+        <div class="hero-buttons">
+            <a href="#courses" class="btn gold"
+            data-en="Explore Courses"
+            data-ar="اكتشف الكورسات">
+                Explore Courses
+            </a>
+
+            <a href="https://wa.me/201002104591" class="btn outline"
+            data-en="Contact Me"
+            data-ar="تواصل معي">
+                Contact Me
+            </a>
+        </div>
+
+    </div>
+</header>
+
+<section id="about">
+
+    <h2 class="section-heading"
+    data-en="ABOUT THE MASTER"
+    data-ar="عن مستر سيف">
+        ABOUT THE MASTER
+    </h2>
+
+    <p class="section-sub"
+    data-en="A better way to learn English"
+    data-ar="طريق أفضل لتعلم اللغة الإنجليزية">
+        A better way to learn English
+    </p>
+
+    <div class="about-grid">
+
+        <div class="about-box">
+            <h3>MR. SAIF GAD</h3>
+
+            <p
+            data-en="Welcome! My goal is to make learning English easier, clearer and more enjoyable. Explore the courses, develop your skills and take your next step with confidence."
+            data-ar="أهلاً بيكم! هدفي هو جعل تعلم اللغة الإنجليزية أسهل وأوضح وأكثر متعة. اكتشف الكورسات، وطور مهاراتك، وخد خطوتك القادمة بثقة.">
+                Welcome! My goal is to make learning English easier, clearer and more enjoyable. Explore the courses, develop your skills and take your next step with confidence.
+            </p>
+        </div>
+
+        <div class="about-decoration">♛</div>
+
+    </div>
+</section>
+
+<section id="courses">
+
+    <h2 class="section-heading"
+    data-en="OUR COURSES"
+    data-ar="الكورسات التعليمية">
+        OUR COURSES
+    </h2>
+
+    <p class="section-sub"
+    data-en="Build your English skills step by step"
+    data-ar="طور مهاراتك في اللغة الإنجليزية خطوة بخطوة">
+        Build your English skills step by step
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-icon">📖</div>
+            <h3>GRAMMAR</h3>
+            <p data-en="Understand English grammar and build a strong foundation."
+            data-ar="افهم قواعد اللغة الإنجليزية وابنِ أساساً قوياً.">
+                Understand English grammar and build a strong foundation.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🗣️</div>
+            <h3>SPEAKING</h3>
+            <p data-en="Speak with confidence and express your ideas clearly."
+            data-ar="تحدث بثقة وعبر عن أفكارك بوضوح.">
+                Speak with confidence and express your ideas clearly.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">✍️</div>
+            <h3>WRITING</h3>
+            <p data-en="Improve your writing and create better sentences."
+            data-ar="حسن كتابتك وتعلم تكوين جمل أفضل.">
+                Improve your writing and create better sentences.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🎧</div>
+            <h3>LISTENING</h3>
+            <p data-en="Train your ears and understand spoken English."
+            data-ar="درب أذنك وافهم اللغة الإنجليزية المنطوقة.">
+                Train your ears and understand spoken English.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section id="levels">
+
+    <h2 class="section-heading"
+    data-en="LEARNING LEVELS"
+    data-ar="المستويات التعليمية">
+        LEARNING LEVELS
+    </h2>
+
+    <p class="section-sub"
+    data-en="Start where you are and keep progressing"
+    data-ar="ابدأ من مستواك واستمر في التطور">
+        Start where you are and keep progressing
+    </p>
+
+    <div class="levels">
+
+        <div class="level">
+            <h3>BEGINNER</h3>
+            <p data-en="Build the basics and learn essential vocabulary."
+            data-ar="تعلم الأساسيات والكلمات المهمة في اللغة.">
+                Build the basics and learn essential vocabulary.
+            </p>
+        </div>
+
+        <div class="level">
+            <h3>INTERMEDIATE</h3>
+            <p data-en="Improve fluency, grammar and communication."
+            data-ar="طور الطلاقة والقواعد ومهارات التواصل.">
+                Improve fluency, grammar and communication.
+            </p>
+        </div>
+
+        <div class="level">
+            <h3>ADVANCED</h3>
+            <p data-en="Master advanced language skills and expression."
+            data-ar="أتقن المهارات المتقدمة والتعبير باللغة.">
+                Master advanced language skills and expression.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section>
+
+    <h2 class="section-heading"
+    data-en="WHY LEARN WITH US?"
+    data-ar="لماذا تتعلم معنا؟">
+        WHY LEARN WITH US?
+    </h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-icon">✨</div>
+            <h3 data-en="CLEAR EXPLANATION" data-ar="شرح مبسط">CLEAR EXPLANATION</h3>
+            <p data-en="Understand concepts with clear explanations."
+            data-ar="افهم المعلومات من خلال شرح واضح ومبسط.">
+                Understand concepts with clear explanations.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">⚡</div>
+            <h3 data-en="PRACTICE" data-ar="التدريب">PRACTICE</h3>
+            <p data-en="Practice to strengthen your knowledge."
+            data-ar="تدرب باستمرار لتقوية معلوماتك.">
+                Practice to strengthen your knowledge.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🎯</div>
+            <h3 data-en="YOUR GOAL" data-ar="هدفك">YOUR GOAL</h3>
+            <p data-en="Stay focused and work toward your goals."
+            data-ar="حافظ على تركيزك واعمل لتحقيق أهدافك.">
+                Stay focused and work toward your goals.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🚀</div>
+            <h3 data-en="KEEP GROWING" data-ar="استمر في التطور">KEEP GROWING</h3>
+            <p data-en="Every lesson is a new opportunity."
+            data-ar="كل درس هو فرصة جديدة للتقدم.">
+                Every lesson is a new opportunity.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section id="contact">
+
+    <div class="contact-box">
+
+        <h2 class="section-heading"
+        data-en="START YOUR JOURNEY"
+        data-ar="ابدأ رحلتك الآن">
+            START YOUR JOURNEY
+        </h2>
+
+        <p
+        data-en="Have a question? Contact Mr. Saif Gad and take your first step toward better English."
+        data-ar="عندك سؤال؟ تواصل مع مستر سيف جاد وابدأ أول خطوة نحو إنجليزي أفضل.">
+            Have a question? Contact Mr. Saif Gad and take your first step toward better English.
+        </p>
+
+        <a class="btn gold" href="https://wa.me/201002104591">
+            WHATSAPP: 01002104591
+        </a>
+
+        <a class="btn outline" href="tel:+201002104591" style="margin:10px">
+            CALL NOW
+        </a>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 <strong>SAIF GAD</strong> | THE ENGLISH MASTER</p>
+    <br>
+    <p>Dream Big • Learn English • Go Further</p>
+    <br>
+    <p>DEVELOPED BY <strong>DRAXEN</strong></p>
+</footer>
+
+<button id="top" title="Back to top">↑</button>
+
+<script>
+
+// LANGUAGE SWITCH
+
+let currentLang = "en";
+
+document.getElementById("lang").addEventListener("click", () => {
+
+    currentLang = currentLang === "en" ? "ar" : "en";
+
+    document.body.classList.toggle("ar", currentLang === "ar");
+
+    document.documentElement.lang = currentLang;
+
+    document.getElementById("lang").textContent =
+        currentLang === "en" ? "عربي" : "English";
+
+    document.querySelectorAll("[data-en]").forEach(el => {
+        el.textContent = el.getAttribute("data-" + currentLang);
+    });
+
+});
+
+// MOBILE MENU
+
+document.getElementById("menu").addEventListener("click", () => {
+    document.getElementById("navlinks").classList.toggle("open");
+});
+
+document.querySelectorAll(".navlinks a").forEach(a => {
+    a.addEventListener("click", () => {
+        document.getElementById("navlinks").classList.remove("open");
+    });
+});
+
+// BACK TO TOP
+
+document.getElementById("top").onclick = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+};
+
+</script>
+
+</body>
+</html>
